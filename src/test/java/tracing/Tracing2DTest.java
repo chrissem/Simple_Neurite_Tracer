@@ -25,7 +25,12 @@ public class Tracing2DTest {
 	double endX = 1.730; double endY = 13.554;
 
 	@Before public void setUp() {
-		image = BatchOpener.openFirstChannel("tests/sample-data/c061AG-small-section-z-max.tif" );
+//		image = BatchOpener.openFirstChannel("tests/sample-data/c061AG-small-section-z-max.tif" );
+		try {
+			image = BatchOpener.openParticularChannel("	/Volumes/data/git/dermal_nerve_fibre_qantification/notebooks/data/bdf/20161019_P139_stack_1_0_cmle.tif", 0);
+		} catch (BatchOpener.NoSuchChannelException e) {
+			e.printStackTrace();
+		}
 		assumeNotNull(image);
 	}
 
